@@ -4,8 +4,14 @@ let vidasJugador = 3
 let vidasEnemigo = 3
 
 function iniciarJuego() {
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')// traigo la section seleccionar ataque
+    sectionSeleccionarAtaque.style.display = 'none' // oculto la section por medio del comando style.display = 'none' basicamente le oculto los estilos
+    
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'none'
+
     let botonMascotaJugador = document.getElementById('boton-mascota') //traigo al boton-mascota
-    botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)// coloco un listener en el boton-mascota
+    botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)// coloco un listener en el boton-mascota asi el metodo seleccionar masctoa se ejecuta hasta que presione una opcion
 
     let botonFuego = document.getElementById('boton-fuego')//enlazo el checkbox de hipodoge del HTML con la variable inputHipodoge
     botonFuego.addEventListener('click', ataqueFuego)
@@ -13,9 +19,19 @@ function iniciarJuego() {
     botonAgua.addEventListener('click', ataqueAgua)
     let botonTierra = document.getElementById('boton-tierra')
     botonTierra.addEventListener('click', ataqueTierra)
+
+    let botonReiniciar = document.getElementById('boton-reiniciar')
+    botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 
 function seleccionarMascotaJugador() {
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')// traigo la section seleccionar mascota
+    sectionSeleccionarMascota.style.display = 'none'
+
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')// traigo la section seleccionar ataque
+    sectionSeleccionarAtaque.style.display = 'block' // muestro la section por medio del comando style.display = 'block'
+
+
     let inputHipodoge = document.getElementById('hipodoge')
     let inputCapipepo = document.getElementById('capipepo')
     let inputRatigueya = document.getElementById('ratigueya')
@@ -126,7 +142,21 @@ function crearMensajeFinal(resultadoFinal) {
     let parrafo = document.createElement('p')//creo un nuevo parrafo dentro del section mensajes
     parrafo.innerHTML = resultadoFinal
 
-    sectionMensajes.appendChild(parrafo)//agrega el elemento al final del cuerpo del documento 
+    sectionMensajes.appendChild(parrafo)//agrega el elemento al final del cuerpo del documento
+
+    let botonFuego = document.getElementById('boton-fuego')
+    botonFuego.disabled = true//deshabilito el boton con .disabled = true
+    let botonAgua = document.getElementById('boton-agua')
+    botonAgua.disabled = true
+    let botonTierra = document.getElementById('boton-tierra')
+    botonTierra.disabled = true
+
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'block'
+}
+
+function reiniciarJuego(){
+    location.reload()//location es la direccion en la que nos encontramos y reload hace recargar dicha pagina
 }
 
 function aleatorio(min, max) {
