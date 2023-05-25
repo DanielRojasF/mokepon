@@ -1,0 +1,45 @@
+@import 'https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap';
+body{
+    font-family:fredoka one,cursive;
+    background-color:#041562
+}
+
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    color: white;
+    font-size: 32px;
+}
+
+.subtitulo{
+    color: white;
+    font-size: 20px;
+}
+
+.tarjetas{
+    display: flex;
+    gap: 10px; /*el gap sirve para hacer espaciado entre elementos*/
+}
+
+.tajeta-de-mokepon {
+    width: 100px;
+    height: 100px;
+    background: #11468f;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.tajeta-de-mokepon img{
+    width: 80px;
+}
+
+/* Oculto los checkbox de mi selecion de personajes*/
+input{
+    display: none;
+}
