@@ -29,7 +29,7 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarMascota.style.display = 'none'
 
     let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')// traigo la section seleccionar ataque
-    sectionSeleccionarAtaque.style.display = 'block' // muestro la section por medio del comando style.display = 'block'
+    sectionSeleccionarAtaque.style.display = 'flex' // muestro la section por medio del comando style.display = 'block'
 
 
     let inputHipodoge = document.getElementById('hipodoge')
@@ -128,21 +128,25 @@ function revisarVidas(){
     }
 }
 function crearMensaje(resultado) {
-    let sectionMensajes = document.getElementById('mensajes')//llamo a la section mensajes del HTML
-    
-    let parrafo = document.createElement('p')//creo un nuevo parrafo dentro del section mensajes
-    parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', las mascota del enemigo atacó con ' + ataqueEnemigo + '- ' + resultado// creo el mensaje del parrafo
+    let sectionMensajes = document.getElementById('resultado')//llamo a la section mensajes del HTML
+    let ataquesDelJugador = document.getElementById('ataques-del-jugador')
+    let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 
-    sectionMensajes.appendChild(parrafo)//agrega el elemento al final del cuerpo del documento 
+    let nuevoAtaqueDelJugador = document.createElement('p')
+    let nuevoAtaqueDelEnemigo = document.createElement('p')
+
+    sectionMensajes.innerHTML = resultado
+    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+
+    ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
+    ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
 
 function crearMensajeFinal(resultadoFinal) {
-    let sectionMensajes = document.getElementById('mensajes')//llamo a la section mensajes del HTML
+    let sectionMensajes = document.getElementById('resultado')//llamo a la section mensajes del HTML 
     
-    let parrafo = document.createElement('p')//creo un nuevo parrafo dentro del section mensajes
-    parrafo.innerHTML = resultadoFinal
-
-    sectionMensajes.appendChild(parrafo)//agrega el elemento al final del cuerpo del documento
+    sectionMensajes.innerHTML = resultadoFinal
 
     let botonFuego = document.getElementById('boton-fuego')
     botonFuego.disabled = true//deshabilito el boton con .disabled = true
