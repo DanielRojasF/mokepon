@@ -1,41 +1,51 @@
+const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+const sectionReiniciar = document.getElementById('reiniciar')
+const botonMascotaJugador = document.getElementById('boton-mascota')
+const botonTierra = document.getElementById('boton-tierra')
+sectionReiniciar.style.display = 'none'
+const botonFuego = document.getElementById('boton-fuego')
+const botonAgua = document.getElementById('boton-agua')
+const botonReiniciar = document.getElementById('boton-reiniciar')
+
+const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+const inputHipodoge = document.getElementById('hipodoge')
+const inputCapipepo = document.getElementById('capipepo')
+const inputRatigueya = document.getElementById('ratigueya')
+const spanMascotaJugador = document.getElementById('mascota-jugador')
+ 
+const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
+
+const spanVidasJugador = document.getElementById('vidas-jugador')
+const spanVidasEnemigo = document.getElementById('vidas-enemigo')
+
+const sectionMensajes = document.getElementById('resultado')
+const ataquesDelJugador = document.getElementById('ataques-del-jugador')
+const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
+
+
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
 function iniciarJuego() {
-    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')// traigo la section seleccionar ataque
     sectionSeleccionarAtaque.style.display = 'none' // oculto la section por medio del comando style.display = 'none' basicamente le oculto los estilos
-    
-    let sectionReiniciar = document.getElementById('reiniciar')
-    sectionReiniciar.style.display = 'none'
-
-    let botonMascotaJugador = document.getElementById('boton-mascota') //traigo al boton-mascota
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)// coloco un listener en el boton-mascota asi el metodo seleccionar masctoa se ejecuta hasta que presione una opcion
-
-    let botonFuego = document.getElementById('boton-fuego')//enlazo el checkbox de hipodoge del HTML con la variable inputHipodoge
     botonFuego.addEventListener('click', ataqueFuego)
-    let botonAgua = document.getElementById('boton-agua')
     botonAgua.addEventListener('click', ataqueAgua)
-    let botonTierra = document.getElementById('boton-tierra')
     botonTierra.addEventListener('click', ataqueTierra)
-
-    let botonReiniciar = document.getElementById('boton-reiniciar')
     botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 
 function seleccionarMascotaJugador() {
-    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')// traigo la section seleccionar mascota
+    
     sectionSeleccionarMascota.style.display = 'none'
 
-    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')// traigo la section seleccionar ataque
+    
     sectionSeleccionarAtaque.style.display = 'flex' // muestro la section por medio del comando style.display = 'block'
 
 
-    let inputHipodoge = document.getElementById('hipodoge')
-    let inputCapipepo = document.getElementById('capipepo')
-    let inputRatigueya = document.getElementById('ratigueya')
-    let spanMascotaJugador = document.getElementById('mascota-jugador')
+    
     
     if (inputHipodoge.checked) { //comparo si el checkbox me retorna un true y lanzo una alerta
         spanMascotaJugador.innerHTML = 'Hipodoge' //Cambiamos el contenido html con javascript, hay varios metodos pero vamos a ver el Element.innerHTML Primero, meter el contenido html dentro de la etiqueta span: <span> </span>
@@ -52,7 +62,6 @@ function seleccionarMascotaJugador() {
 
 function seleccionarMascotaEnemigo() {
     let mascotaAleatoria = aleatorio(1,3)
-    let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 
     if (mascotaAleatoria == 1) {
         spanMascotaEnemigo.innerHTML = 'Hipodoge'
@@ -91,9 +100,6 @@ function ataqueAleatorioEnemigo() {
 }
 
 function combate(){
-    let spanVidasJugador = document.getElementById('vidas-jugador')//creo una variable que contenga al span vidas-jugador del html 
-    let spanVidasEnemigo = document.getElementById('vidas-enemigo')
-
     if(ataqueEnemigo == ataqueJugador){
         crearMensaje('EMPATE')
     } else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA'){
@@ -128,10 +134,6 @@ function revisarVidas(){
     }
 }
 function crearMensaje(resultado) {
-    let sectionMensajes = document.getElementById('resultado')//llamo a la section mensajes del HTML
-    let ataquesDelJugador = document.getElementById('ataques-del-jugador')
-    let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
-
     let nuevoAtaqueDelJugador = document.createElement('p')
     let nuevoAtaqueDelEnemigo = document.createElement('p')
 
@@ -143,19 +145,11 @@ function crearMensaje(resultado) {
     ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
 
-function crearMensajeFinal(resultadoFinal) {
-    let sectionMensajes = document.getElementById('resultado')//llamo a la section mensajes del HTML 
-    
+function crearMensajeFinal(resultadoFinal) {  
     sectionMensajes.innerHTML = resultadoFinal
-
-    let botonFuego = document.getElementById('boton-fuego')
     botonFuego.disabled = true//deshabilito el boton con .disabled = true
-    let botonAgua = document.getElementById('boton-agua')
     botonAgua.disabled = true
-    let botonTierra = document.getElementById('boton-tierra')
     botonTierra.disabled = true
-
-    let sectionReiniciar = document.getElementById('reiniciar')
     sectionReiniciar.style.display = 'block'
 }
 
